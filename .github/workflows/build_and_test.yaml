@@ -24,6 +24,10 @@ jobs:
             ROS_REPO: main
           - ROS_DISTRO: galactic
             ROS_REPO: testing
+          - ROS_DISTRO: galactic
+            ROS_REPO: main
+          - ROS_DISTRO: galactic
+            ROS_REPO: testing
     env:
       UPSTREAM_WORKSPACE: geometric_shapes.repos
       AFTER_SETUP_UPSTREAM_WORKSPACE: 'vcs pull $BASEDIR/upstream_ws/src'
@@ -65,7 +69,7 @@ jobs:
             ccache-${{ env.CACHE_PREFIX }}-${{ github.sha }}
             ccache-${{ env.CACHE_PREFIX }}
       - name: industrial_ci
-        uses: 'ros-industrial/industrial_ci@master'
+        uses: 'jspricke/industrial_ci@missing_apt_update'
         env: ${{ matrix.env }}
       - name: upload test artifacts (on failure)
         uses: actions/upload-artifact@v2
